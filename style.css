@@ -1,0 +1,17 @@
+body{
+  background-color: lightgrey;
+  padding-top: 1rem;
+}
+.chart{
+  background-color: whitesmoke;
+  padding: 1rem;
+}
+
+.barDiv{
+  padding: 1rem;
+}
+
+.barLevel{
+  height: 1rem;
+  background-color: skyblue;
+}
