@@ -1,32 +1,39 @@
 //Initializing variables
 
-let barWidth = 20;  //depends on the amount of values passed
-let barHeight = 20; //Based off of data values passed
-
+//Customizable Properties
 let barColour = "skyblue";
 let labelColour = "orange";
 let barSpacing = 1;
 let barChartAxis = "x"; //horizontal or vertical
 
+
 //Bar chart title cuztomizable properties
+let barChartTitle = "Bar Chart";
 let titleFontSize = 2;
 let titleFontColour = "black";
 
 //Data
 let barData = [1, 2, 3, 4, 5];
+
 let barOptions = {
   width: 2,
   height: 3
 }
+
 let DOMElement = "";
 
-let numOfBars = barData.length;
+//form
+let settingsForm = document.querySelector('.settings');
+
+
+setBarLengths(barData, ".chart");
 
 
 
-console.log(setBarLengths(barData, ".chart"));
-
-
+//Starts the creation of the bar graph based on values in the form
+function createChart(){
+  drawBarChart(barData, barOptions, ".chart");
+}
 
 function drawBarChart(data, options, element){
 //data is an array
@@ -34,7 +41,7 @@ function drawBarChart(data, options, element){
 //element will be a DOM element name
 
 
-  DOMElement = "chart";
+  DOMElement = element;
 
   //Change the bar height
   barData = data;
@@ -64,9 +71,6 @@ function setBarLengths(barData, DOMElement){
     chartDiv.appendChild(barTemplate);
 
   }
-
-  console.log(chartDiv);
-
 
    let barLengths = document.querySelectorAll('.barLevel');
    for(let i = 0; i < barData.length; i++){
