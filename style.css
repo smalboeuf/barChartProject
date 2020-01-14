@@ -14,4 +14,6 @@ body{
 .barLevel{
   height: 1rem;
   background-color: skyblue;
+  width: 5rem;
+
 }
