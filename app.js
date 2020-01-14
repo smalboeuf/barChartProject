@@ -1,16 +1,25 @@
 //Initializing variables
 
-//Customizable Properties
-let barColour = "skyblue";
-let labelColour = "orange";
-let barSpacing = 1;
-let barChartAxis = "x"; //horizontal or vertical
+//form
+let settingsForm = document.querySelector('.settings');
+settingsForm.addEventListener('submit', createChart);
 
+//Custamizable Properties
+let barColour = document.getElementById('barColour').value;
+let labelColour = document.getElementById('labelColour').value;
+let barSpacing = document.getElementById('barSpacing').value;
+//Figure out barChartAxis changes
+let barChartAxis = document.getElementById('barChartAxis').value;
 
 //Bar chart title cuztomizable properties
 let barChartTitle = "Bar Chart";
 let titleFontSize = 2;
 let titleFontColour = "black";
+
+
+
+
+console.log(barColour);
 
 //Data
 let barData = [1, 2, 3, 4, 5];
@@ -22,8 +31,9 @@ let barOptions = {
 
 let DOMElement = "";
 
-//form
-let settingsForm = document.querySelector('.settings');
+
+
+
 
 
 setBarLengths(barData, ".chart");
@@ -31,15 +41,45 @@ setBarLengths(barData, ".chart");
 
 
 //Starts the creation of the bar graph based on values in the form
-function createChart(){
-  drawBarChart(barData, barOptions, ".chart");
+function createChart(e){
+  //Calls all the functions that will make the appropriate changes
+  e.preventDefault();
+
+  changeBarSettings(barColour);
+  //drawBarChart(barData, barOptions, ".chart");
+  //changeTitleSettings();
+
+  e.preventDefault();
+}
+
+
+function changeTitleSettings(){
+
+}
+
+
+function changeBarSettings(barColour){
+  //Changing the colour of the bar
+  barLevel = document.getElementsByClassName('barLevel');
+  barColour = document.getElementById('barColour').value;
+  for(let i = 0; i < barLevel.length; i++){
+    barLevel[i].style.backgroundColor = barColour;
+  }
+
+  changeBarLabelColour();
+
+}
+
+function changeBarLabelColour(){
+  //Changing the colour of the bar
+  barLabel = document.getElementsByClassName('barLevel');
+  barColour = document.getElementById('barColour').value;
+  for(let i = 0; i < barLevel.length; i++){
+    barLevel[i].style.backgroundColor = barColour;
+  }
 }
 
 function drawBarChart(data, options, element){
-//data is an array
-//options is an object (bar colour, label colour, bar spacing, bar chart axes )
-//element will be a DOM element name
-
 
   DOMElement = element;
 
@@ -61,12 +101,13 @@ function setBarLengths(options){
 function setBarLengths(barData, DOMElement){
    //Setting the length of the bar based on the data
    let chartDiv = document.querySelector(DOMElement);
-   console.log(chartDiv);
+   chartDiv.innerHTML = "";
   for(let i = 0; i < barData.length; i++){
     let barTemplate = document.createElement("div");
     barTemplate.classList.add("barDiv");
     barTemplate.innerHTML += "<h4>Title "+(i+1)+"</h4>";
-    barTemplate.innerHTML += "<div class = bar><div class = barLevel></div></div>"
+    barTemplate.innerHTML += "<div class = bar><div class = barLevel></div></div>";
+
 
     chartDiv.appendChild(barTemplate);
 
