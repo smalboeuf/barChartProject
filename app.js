@@ -17,12 +17,8 @@ let titleFontSize = 2;
 let titleFontColour = "black";
 
 
-
-
-console.log(barColour);
-
 //Data
-let barData = [1, 2, 3, 4, 5];
+let barData = [1, 12, 3, 8, 14];
 
 let barOptions = {
   width: 2,
@@ -53,11 +49,6 @@ function createChart(e){
 }
 
 
-function changeTitleSettings(){
-
-}
-
-
 function changeBarSettings(){
   //Changing the colour of the bar
   barLevel = document.getElementsByClassName('barLevel');
@@ -68,6 +59,7 @@ function changeBarSettings(){
 
   changeBarLabelColour();
   changeBarSpacing();
+
 
 }
 
@@ -82,6 +74,12 @@ function changeBarLabelColour(){
 
 function changeBarSpacing(){
   //Change the padding in between each bar div
+  barSpacing = document.getElementsByClassName('barDiv');
+  currentSpacing = document.getElementById('barSpacing').value;
+
+  for(let i = 0; i < barData.length; i++){
+    barSpacing[i].style.padding = currentSpacing +"rem";
+  }
 }
 
 function drawBarChart(data, options, element){
@@ -113,15 +111,19 @@ function setBarLengths(barData, DOMElement){
     barTemplate.innerHTML += "<h4 class=barLabel>Title "+(i+1)+"</h4>";
     barTemplate.innerHTML += "<div class = bar><div class = barLevel></div></div>";
 
-
     chartDiv.appendChild(barTemplate);
 
   }
 
    let barLengths = document.querySelectorAll('.barLevel');
+
    for(let i = 0; i < barData.length; i++){
      barLengths[i].style.width = barData[i] + "rem";
    }
+}
+
+function changeTitleSettings(){
+  //Change title according to the value that is in form
 }
 
 

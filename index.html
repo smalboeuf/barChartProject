@@ -9,24 +9,38 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
 
+
     <title>Dynamic Bar Graph</title>
   </head>
 
   <body>
 
     <div class="container">
-      <div class = "chart">
         <h1>Bar chart</h1>
+      <div class = "chart">
+
 
 
   </div>
   <br>
-  <form class = "settings" action="" class="chartSettings" onsubmit="createChart()">
+  <form class = "settings" action="" class="chartSettings">
       Bar Colour:<br>
-      <input type="text" name="barcolour" value="">
+      <select name="barcolour" id="barColour">
+        <option value="skyblue">skyblue</option>
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="pink">pink</option>
+      </select>
+      <br>
+      Bar Spacing:<br>
+      <select name="barcolour" id="barSpacing">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+      </select>
       <br>
       Label Colour:<br>
-      <input type="text" name="labelcolour" value="">
+      <input type="text" id = "labelColour" name="labelcolour" value="">
       <br>
       Title Colour:<br>
       <input type="text" name="barheight" value="">
@@ -35,12 +49,15 @@
       <input type="text" name="barwidth" value="">
       <br>
       Title Font Size:<br>
-      <input type="text" name="barwidth" value="">
+      <input type="text" name="titlefontsize" value="">
       <br>
       Title Font Colour:<br>
-      <input type="text" name="barwidth" value="">
+      <input type="text" name="titlefontcolour" value="">
       <br>Bar Chart Axis:<br>
-      <input type="text" name="barwidth" value="">
+      <select id="barChartAxis" name="Axis">
+        <option value="x">X</option>
+        <option value="y">Y</option>
+      </select>
       <br>
       <br>
     <input type="submit" name = "Submit" value="Submit">
@@ -49,7 +66,10 @@
 
     </div>
 
-
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
     <!-- Optional JavaScript -->
     <script src="app.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
