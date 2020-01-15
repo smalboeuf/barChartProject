@@ -45,7 +45,7 @@ function createChart(e){
   //Calls all the functions that will make the appropriate changes
   e.preventDefault();
 
-  changeBarSettings(barColour);
+  changeBarSettings();
   //drawBarChart(barData, barOptions, ".chart");
   //changeTitleSettings();
 
@@ -58,7 +58,7 @@ function changeTitleSettings(){
 }
 
 
-function changeBarSettings(barColour){
+function changeBarSettings(){
   //Changing the colour of the bar
   barLevel = document.getElementsByClassName('barLevel');
   barColour = document.getElementById('barColour').value;
@@ -67,16 +67,21 @@ function changeBarSettings(barColour){
   }
 
   changeBarLabelColour();
+  changeBarSpacing();
 
 }
 
 function changeBarLabelColour(){
   //Changing the colour of the bar
-  barLabel = document.getElementsByClassName('barLevel');
-  barColour = document.getElementById('barColour').value;
+  barLabel = document.getElementsByClassName('barLabel');
+  labelColour = document.getElementById('labelColour').value;
   for(let i = 0; i < barLevel.length; i++){
-    barLevel[i].style.backgroundColor = barColour;
+    barLabel[i].style.color = labelColour;
   }
+}
+
+function changeBarSpacing(){
+  //Change the padding in between each bar div
 }
 
 function drawBarChart(data, options, element){
@@ -105,7 +110,7 @@ function setBarLengths(barData, DOMElement){
   for(let i = 0; i < barData.length; i++){
     let barTemplate = document.createElement("div");
     barTemplate.classList.add("barDiv");
-    barTemplate.innerHTML += "<h4>Title "+(i+1)+"</h4>";
+    barTemplate.innerHTML += "<h4 class=barLabel>Title "+(i+1)+"</h4>";
     barTemplate.innerHTML += "<div class = bar><div class = barLevel></div></div>";
 
 
