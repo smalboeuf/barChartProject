@@ -38,16 +38,28 @@ setBarLengths(barData, ".chart");
 
 //Starts the creation of the bar graph based on values in the form
 function createChart(e){
-  //Calls all the functions that will make the appropriate changes
+
   e.preventDefault();
 
   changeBarSettings();
   //drawBarChart(barData, barOptions, ".chart");
-  //changeTitleSettings();
+  changeTitleSettings();
 
   e.preventDefault();
 }
 
+function drawBarChart(data, options, element){
+
+  DOMElement = element;
+
+  //Change the bar height
+  barData = data;
+  setBarLengths(barData, DOMElement);
+
+  //Change the bar settings
+  setBarOptions(options);
+
+};
 
 function changeBarSettings(){
   //Changing the colour of the bar
@@ -82,19 +94,6 @@ function changeBarSpacing(){
   }
 }
 
-function drawBarChart(data, options, element){
-
-  DOMElement = element;
-
-  //Change the bar height
-  barData = data;
-  setBarLengths(barData, DOMElement);
-
-  //Change the bar settings
-  setBarOptions(options);
-
-};
-
 function setBarLengths(options){
   //Settings the barOptions based on the object
   barOptions.height = options.height;
@@ -124,6 +123,19 @@ function setBarLengths(barData, DOMElement){
 
 function changeTitleSettings(){
   //Change title according to the value that is in form
+
+  changeTitle();
+  // changeTitleColour();
+  // changeTitleFontSize();
+
+}
+
+function changeTitle(){
+  let chartTitle = document.getElementById('chartTitle');
+  let chartTitleForm = document.querySelector('#titleForm').value;
+
+  chartTitle.innerHTML = chartTitleForm;
+
 }
 
 
