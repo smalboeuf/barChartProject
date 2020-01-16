@@ -125,16 +125,29 @@ function changeTitleSettings(){
   //Change title according to the value that is in form
 
   changeTitle();
-  // changeTitleColour();
+  changeTitleColour();
   // changeTitleFontSize();
 
 }
 
 function changeTitle(){
-  let chartTitle = document.getElementById('chartTitle');
+
+  if(document.querySelector('#titleForm').value !== ""){
+    let chartTitle = document.getElementById('chartTitle');
   let chartTitleForm = document.querySelector('#titleForm').value;
 
   chartTitle.innerHTML = chartTitleForm;
+  }else{
+    console.log("There is nothing in the box!");
+  }
+
+}
+
+function changeTitleColour(){
+  let chartTitleColour = document.getElementById('chartTitle');
+  let chartTitleColourForm = document.querySelector('#chartTitleColour').value;
+
+  chartTitleColour.style.color = chartTitleColourForm;
 
 }
 
