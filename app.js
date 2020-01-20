@@ -17,6 +17,7 @@ let titleFontSize = 2;
 let titleFontColour = "black";
 
 
+
 //Data
 let barData = [1, 12, 3, 8, 14];
 
@@ -41,8 +42,9 @@ function createChart(e){
 
   e.preventDefault();
 
+
+  drawBarChart(barData, barOptions, ".chart");
   changeBarSettings();
-  //drawBarChart(barData, barOptions, ".chart");
   changeTitleSettings();
 
   e.preventDefault();
@@ -114,6 +116,7 @@ function setBarLengths(barData, DOMElement){
 
   }
 
+  //Filling the chart with the number of bars necessary
    let barLengths = document.querySelectorAll('.barLevel');
 
    for(let i = 0; i < barData.length; i++){
@@ -156,5 +159,30 @@ function changeTitleFontSize(){
   let titleFontSizeForm = document.querySelector('#titleFontSize').value;
 
   titleFontSize.style.fontSize = titleFontSizeForm + "rem";
+}
+
+function setBarOptions(options){
+  //Changing the width of the bar based on how many values there are
+
+  let chartBars = document.getElementsByClassName('barLevel');
+
+  if(barData.length <= 5){
+    options.width = "3rem";
+    for(let i = 0; i < barData.length; i++){
+      chartBars[i].style.height = options.width;
+    }
+  }
+
+  if(barData.length <= 10){
+    options.width = "2rem";
+    for(let i = 0; i < barData.length; i++){
+      chartBars[i].style.height = options.width;
+    }
+  }
+
+}
+
+function setBarWidth(){
+
 }
 
