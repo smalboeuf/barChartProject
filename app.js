@@ -126,7 +126,7 @@ function changeTitleSettings(){
 
   changeTitle();
   changeTitleColour();
-  // changeTitleFontSize();
+  changeTitleFontSize();
 
 }
 
@@ -151,5 +151,10 @@ function changeTitleColour(){
 
 }
 
+function changeTitleFontSize(){
+  let titleFontSize = document.getElementById('chartTitle');
+  let titleFontSizeForm = document.querySelector('#titleFontSize').value;
 
+  titleFontSize.style.fontSize = titleFontSizeForm + "rem";
+}
 
